@@ -8,12 +8,16 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Survey {
 	
 	private Long surveyId;
+	
 	@NotBlank (message="Please select a park code.")
 	private String parkCode;
+	
 	@NotBlank (message="Email is required.") @Email (message="Please enter a valid email.")
 	private String emailAddress;
+	
 	@NotBlank (message="Please select a state.")
 	private String state;
+	
 	@NotBlank (message="Please select an activity level.")
 	private String activityLevel;
 	

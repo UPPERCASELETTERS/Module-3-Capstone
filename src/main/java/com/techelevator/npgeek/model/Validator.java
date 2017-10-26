@@ -8,11 +8,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class Validator {
 	
-	@Autowired
 	static ParkDao parkDao;
 	
-	@Autowired
 	static SurveyDao surveyDao;
+	
+	@SuppressWarnings("static-access")
+	@Autowired
+	private void setParkDao(ParkDao parkDao){
+		this.parkDao = parkDao;
+	}
+	
+	@SuppressWarnings("static-access")
+	@Autowired
+	private void setSurveyDao(SurveyDao surveyDao){
+		this.surveyDao = surveyDao;
+	}
+	
 	
 	public static boolean isEmailAvailable (String emailaddress){
 		

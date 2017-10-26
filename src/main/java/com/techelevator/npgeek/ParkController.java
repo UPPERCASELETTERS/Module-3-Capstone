@@ -19,6 +19,7 @@ import com.techelevator.npgeek.model.Survey;
 import com.techelevator.npgeek.model.SurveyDao;
 import com.techelevator.npgeek.model.WeatherDao;
 
+
 @Controller
 public class ParkController {
 	
@@ -60,6 +61,10 @@ public class ParkController {
 	@RequestMapping(path = "/survey", method = RequestMethod.GET)
 	public String getSurvey(ModelMap modelHolder){
 		
+		if(! modelHolder.containsAttribute("survey")){
+			modelHolder.put("survey", new Survey());
+		}
+		
 		modelHolder.put("parks", parkDao.getAllParks());
 		modelHolder.put("formFiller", new FormFiller());
 		
@@ -79,7 +84,7 @@ public class ParkController {
 		return "redirect:/favoriteParks";
 	}
 	
-	@RequestMapping(path = "/favoriteParks", method = RequestMethod.POST)
+	@RequestMapping(path = "/favoriteParks", method = RequestMethod.GET)
 	public String getFavoriteParks(ModelMap modelHolder){
 		
 		modelHolder.put("parkRanking", surveyDao.getParkRanking());
