@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 public class Validator {
 	
 	@Autowired
-	ParkDao parkDao;
+	static ParkDao parkDao;
 	
 	@Autowired
-	SurveyDao surveyDao;
+	static SurveyDao surveyDao;
 	
-	public boolean isEmailAvailable (String emailaddress){
+	public static boolean isEmailAvailable (String emailaddress){
 		
 		List<String> emails = surveyDao.getAllEmails();
 		
@@ -26,21 +26,20 @@ public class Validator {
 		return true;
 	}
 	
-	public boolean isValidParkCode (String parkcode) {
+	public static boolean isValidParkCode (String parkCode) {
 		
 		List<Park> parks = parkDao.getAllParks();
-		
 		for(Park park : parks) {
-			if (parkcode.equals(park.getParkCode())) {
+			if (parkCode.equals(park.getParkCode())) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	public boolean isValidActivity (String activity) {
+	public static boolean isValidActivity (String activity) {
 		
-		String[] activities = {"inactive", "sedentary", "active", "extremely active"};
+		String[] activities = {"Inactive", "Sedentary", "Active", "Extremely active"};
 		
 		for (String act : activities) {
 			if (act.equals(activity)) {
@@ -50,5 +49,15 @@ public class Validator {
 		return false;
 	}
 	
-	
+	public static boolean isAState (String maybeState){
+		String[] states = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD","MA", "MI", "MN", "MS", "MO", "MT",
+				"NE","NV","NH","NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD","TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
+		
+		for(String state : states){
+			if(maybeState.equals(state)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
