@@ -82,54 +82,55 @@
 	<div>
 		<c:out value="${park.parkDescription}"/>
 	</div>
-
+	
+	<h3>Five Day Forecast</h3><br/>
+	<div class="flexContainerWeather">
 	<c:set var = "first" value = "true"/>
 	<c:forEach var ="weather" items = "${fivecast}">
 		<c:url var = "weatherImageURL" value = "${weather.forecastImageURL}"/>
 		<c:choose>
 			<c:when test = "${first}">
 				<c:set var = "first" value = "false"/>
-				<h3>Today</h3>
-				<span id = "todaysWeather">
+				<div class = "todaysWeather">
 					<img src = "${weatherImageURL}" id ="todayImage"/><br/>
 					<c:choose>
 						<c:when test = "${tempStyle == 'c'}">
 							<fmt:formatNumber var="high" value=	"${(weather.high-32)*5/9}" maxFractionDigits="1"/>					
 							<fmt:formatNumber var="low" value=	"${(weather.low-32)*5/9}" maxFractionDigits="1"/>
-							<c:out value = "High: ${high}"/>
-							<c:out value = "Low: ${low}"/><br/>
+							<c:out value = "High: ${high} C"/>
+							<c:out value = "Low: ${low} C"/><br/>
 						</c:when>
 						<c:otherwise>
-							<c:out value = "High: ${weather.high}"/>
-							<c:out value = "Low: ${weather.low}"/><br/>
+							<c:out value = "High: ${weather.high} F"/>
+							<c:out value = "Low: ${weather.low} F"/><br/>
 						</c:otherwise>
 					</c:choose>
 					<c:out value = "${weather.recommendation}"/>
 					<c:if test = "${weather.tooHot}">Bring an extra gallon of water.</c:if>
 					<c:if test = "${weather.tooCold}">Be careful, it's cold.</c:if>
 					<c:if test = "${weather.varying}">Wear breathable clothes.</c:if><br/><br/>
-				</span>
+				</div>
 			</c:when>
 			<c:otherwise>
-				<span id = "futureWeather">
+				<div class = "futureWeather">
 					<img src = "${weatherImageURL}" class = "notTodayImage"/><br/>
 					<c:choose>
 						<c:when test = "${tempStyle == 'c'}">
 							<fmt:formatNumber var="high" value=	"${(weather.high-32)*5/9}" maxFractionDigits="1"/>					
 							<fmt:formatNumber var="low" value=	"${(weather.low-32)*5/9}" maxFractionDigits="1"/>
-							<c:out value = "High: ${high}"/>
-							<c:out value = "Low: ${low}"/><br/>
+							<c:out value = "High: ${high} C"/><br/>
+							<c:out value = "Low: ${low} C"/><br/>
 						</c:when>
 						<c:otherwise>
-							<c:out value = "High: ${weather.high}"/>
-							<c:out value = "Low: ${weather.low}"/><br/>
+							<c:out value = "High: ${weather.high} F"/><br/>
+							<c:out value = "Low: ${weather.low} F"/><br/>
 						</c:otherwise>
 					</c:choose>
-				</span>
+				</div>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
-	
+	</div>
 	<c:url var = "changeTempURL" value = "/detail"/>
 	<form method="POST" action = "${changeTempURL}">
 		<c:choose>

@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top navBarColor">
         <div class="container headerContainer">
             
              <img src = "<c:url value = "/img/logo.png"/>" class = "logo"/>
@@ -30,6 +30,7 @@
                 <ul class="nav navbar-nav ourNavList">
                     <li><a href="<c:url value="/"/>">Home</a></li>
                     <li><a href="<c:url value="/survey"/>">Survey</a></li>
+                    <li><a href="<c:url value="/favoriteParks"/>">Popular Parks</a></li>
 
                 </ul>
             </div>

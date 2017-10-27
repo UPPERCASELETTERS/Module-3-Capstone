@@ -4,7 +4,9 @@
 <%@include file="common/header.jspf" %>
 <br>
 <br>
+<c:if test="${survey != null}">
 <h3>Thank you for filling our survey, <c:out value = "${survey.emailAddress}"/></h3>
+</c:if>
 <table>
 	<tr>
 		<th> Park </th>

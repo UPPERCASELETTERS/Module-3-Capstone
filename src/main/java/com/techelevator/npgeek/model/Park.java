@@ -18,7 +18,9 @@ public class Park {
 	private Integer entryFee;
 	private Integer numberOfAnimalSpecies;
 	
-	public String getParkImageURL() { //is this polymorphic?
+	
+	//We only did this to follow an example in previous exercises.
+	public String getParkImageURL() { 
 		return "/img/parks/" + parkCode.toLowerCase() + ".jpg";
 	}
 	public String getParkCode() {
