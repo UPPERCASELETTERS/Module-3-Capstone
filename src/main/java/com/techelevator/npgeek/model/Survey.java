@@ -10,16 +10,16 @@ public class Survey {
 	private Long surveyId;
 	
 	@NotBlank (message="Please select a park code.")
-	private String parkCode;
+	private String parkCode = "";
 	
 	@NotBlank (message="Email is required.") @Email (message="Please enter a valid email.")
-	private String emailAddress;
+	private String emailAddress = "";
 	
 	@NotBlank (message="Please select a state.")
-	private String state;
+	private String state = "";
 	
 	@NotBlank (message="Please select an activity level.")
-	private String activityLevel;
+	private String activityLevel = "";
 	
 	private boolean emailAvailable;
 	@AssertTrue(message = "This email has already submitted a survey.")
@@ -39,9 +39,9 @@ public class Survey {
 		return Validator.isValidActivity(activityLevel);
 	}
 	
-	private boolean aState;
-	@AssertTrue(message = "We had to write out every state code because of you.  Who hurt you?")
-	public boolean isAState(){
+	private boolean validState;
+	@AssertTrue(message = "Who hurt you?")
+	public boolean isValidState(){
 		return Validator.isAState(state);
 	}
 	

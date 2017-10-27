@@ -21,12 +21,13 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="<c:url value="/"/>" class="navbar-brand">National Park Geek</a>
-            </div>
-            <div class="navbar">
-                <ul class="nav navbar-nav">
+        <div class="container headerContainer">
+            
+             <img src = "<c:url value = "/img/logo.png"/>" class = "logo"/>
+ 
+            <div class="navbar" id = "ourNavbar">
+            	<br/>
+                <ul class="nav navbar-nav ourNavList">
                     <li><a href="<c:url value="/"/>">Home</a></li>
                     <li><a href="<c:url value="/survey"/>">Survey</a></li>
 
@@ -36,3 +37,4 @@
     </div>
 
     <div class="container">
+    <br/>

@@ -1,9 +1,7 @@
 package com.techelevator.npgeek.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -34,19 +32,22 @@ public class SurveyJdbcDao implements SurveyDao {
 	}
 
 	@Override
-	public Map<String, Integer> getParkRanking() {
+	public List<SurveyResult> getParkRanking() {
 
-		String sqlParkRanking = "SELECT count(parkcode) AS count, parkcode FROM survey_result GROUP BY parkcode ORDER BY count DESC";
+		String sqlParkRanking = "SELECT count(sr.parkcode) AS count, parkname FROM survey_result sr JOIN  park p ON sr.parkcode = p.parkcode GROUP BY sr.parkcode, p.parkname ORDER BY count DESC, p.parkname";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlParkRanking);
 		
-		Map <String, Integer> parkCount = new HashMap<>();
+		List <SurveyResult> surveyResults = new ArrayList<>();
 		
 		while(results.next()) {
-	
-			parkCount.put(results.getString("parkcode"), results.getInt("count"));
+			SurveyResult surveyResult = new SurveyResult();
+			surveyResult.setParkName(results.getString("parkname"));
+			surveyResult.setCount(results.getInt("count"));
+			
+			surveyResults.add(surveyResult);
 		}
 		
-		return parkCount;
+		return surveyResults;
 	}
 
 	@Override

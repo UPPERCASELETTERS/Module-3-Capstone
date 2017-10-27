@@ -15,6 +15,7 @@
 				<form:errors path="emailAddress" cssClass="error"/>
 				<form:errors path="emailAvailable" cssClass="error"/>
 		</div>
+		
 		<div>
 			<label for ="parkCode">Park Code: </label>
 			<form:select path = "parkCode">
@@ -26,8 +27,9 @@
 				</c:forEach>
 			</form:select>
 			<form:errors path="parkCode" cssClass="error"/>
-
+							<form:errors path="validParkCode" cssClass="error"/>
 		</div>
+		
 		<div>
 			<label for ="state">State of Residence: </label>
 			<form:select path = "state">
@@ -37,9 +39,11 @@
 						<c:out value = "${state}"/>
 					</form:option>
 				</c:forEach>
-			<form:errors path="state" cssClass="error"/>
 			</form:select>
+			<form:errors path="state" cssClass="error"/>
+			<form:errors path="validState" cssClass="error"/>
 		</div>
+		
 		<div>
 			<label for ="activityLevel">Level of Physical Activity: </label>
 			<form:select path = "activityLevel">
@@ -49,8 +53,9 @@
 						<c:out value = "${activityLevel}"/>
 					</form:option>
 				</c:forEach>
-			<form:errors path="activityLevel" cssClass="error"/>
 			</form:select>
+			<form:errors path="activityLevel" cssClass="error"/>
+			<form:errors path="validActivity" cssClass="error"/>
 		</div>
 		<br/>
 		<input type="submit" value="Submit"/>

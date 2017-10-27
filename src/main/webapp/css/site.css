@@ -73,3 +73,24 @@ td {
 	width: 5%;
 	border: 3px solid black;
 }
+.logo{
+	flex-grow: 1;
+	width: 10%;
+	height: 10%;
+	display: inline;
+}
+
+#ourNavbar{
+	flex-grow: 8;
+	display: inline;
+	align-self: center;
+}
+
+.headerContainer{
+	display: flex;
+	align-items: center;
+}
+
+.ourNavList{
+	font-size: 150%;
+}

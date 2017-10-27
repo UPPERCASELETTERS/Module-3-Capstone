@@ -12,8 +12,8 @@
 	</tr>
 	<c:forEach var = "parkRank" items = "${parkRanking}">
 		<tr>
-			<td><c:out value = "${parkRank.key}"/></td>
-			<td><c:out value = "${parkRank.value}"/></td>
+			<td><c:out value = "${parkRank.parkName}"/></td>
+			<td><c:out value = "${parkRank.count}"/></td>
 		</tr>
 	</c:forEach>
 	
